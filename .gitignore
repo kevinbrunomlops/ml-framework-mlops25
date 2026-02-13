@@ -205,3 +205,21 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# OS junk 
+*.DS_Store
+
+# Data (tracked b DVC)
+data/raw/
+data/processed/
+
+# Training outputs
+runs/
+checkpoints/
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.pyc 
+.venv/
