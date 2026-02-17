@@ -10,8 +10,8 @@ class SimpleCNN(nn.Module):
             nn.MaxPool2d(2),  # 16x16
             
             nn.Conv2d(32, 64, kernel_size=3, padding=1),
-            nn. ReLU(),
-            nn.MaxPool2d, # 8x8
+            nn.ReLU(),
+            nn.MaxPool2d(2), # 8x8
 
             nn.Conv2d(64, 128, kernel_size=3, padding=1),
             nn.ReLU(),
