@@ -1,0 +1,14 @@
+seed: 42
+
+data:
+  dir: data/raw
+  num_workers: 2
+
+train: 
+  epochs: 10
+  batch_size: 256
+  lr: 0.001
+
+run:
+  name: exp3_big_hatch
+  out_dir: runs
