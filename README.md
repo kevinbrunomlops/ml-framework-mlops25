@@ -14,12 +14,12 @@ The dataset used is CIFAR-10, a standard image classification benchmark consisti
 
 ### What I built 
 The project implements: 
-- A custom dataset pipeline using ´´´torchvision.datasets.CIFAR10´´´
-- A modular CNN model (´´´model.py´´´)
-- A training loop separated from evaluation logic (´´´train.py´´´)
-- Configuration driven training via ´´´params.yaml´´´
+- A custom dataset pipeline using ´torchvision.datasets.CIFAR10´
+- A modular CNN model (´model.py´)
+- A training loop separated from evaluation logic (´train.py´)
+- Configuration driven training via ´params.yaml´
 - Experiment tracking through DVC
-- Reproducible execution via ´´´main.py´´´
+- Reproducible execution via ´main.py´
 
 The final system separates: 
 - Code
@@ -29,6 +29,7 @@ The final system separates:
 This reflects a real world ML engineering workflow rather than a single traning script.
 
 ### Project structure
+```
 ML-FRAMEWORK-MLOPS25/
 │
 ├── .dvc/                      # DVC internal metadata
@@ -64,6 +65,7 @@ ML-FRAMEWORK-MLOPS25/
 ├── pyproject.toml             # Project dependencies (uv)
 ├── uv.lock                    # Locked dependency versions
 └── README.md                  # Project documentation
+```
 
 This structure shows: 
 - Proper separation of data and code 
@@ -76,18 +78,18 @@ It follows a simplified production style ML layout rather than a single script n
 
 ### Dataset handling
 
-CIFAR-10 is downloaded using ´´´torchvision.datasets.CIFAR10´´´ into:
-´´´data/raw/´´´
+CIFAR-10 is downloaded using ´torchvision.datasets.CIFAR10´ into:
+´data/raw/´
 
 The dataset is versioned using DVC:
-´´´dvc add data/raw ´´´
+´dvc add data/raw ´
 
 This create:
-´´´data/raw.dvc´´´
+´data/raw.dvc´
 The .dvc file is tracked by Git, while the raw dataset is not. 
 This ensures:
 - No raw data is pushed to GitHub
-- Data can be restored using ´´´dvc pull´´´
+- Data can be restored using ´dvc pull´
 
 ### Model architecture 
 I implemented a smal Convulutioanl Neural Network: 
@@ -98,8 +100,8 @@ I implemented a smal Convulutioanl Neural Network:
 
 The model outputs logits for 10 classes
 
-Loss function: ´´´CrossEntryLoss´´´
-Optimizer: ´´´Adam´´´
+Loss function: ´CrossEntryLoss´
+Optimizer: ´Adam´
 
 ### Training pipeline 
 The training pipeline: 
@@ -109,10 +111,10 @@ The training pipeline:
 4. Initializes model 
 5. Trains for configured number of epochs 
 6. Evaluates on test set
-7. Saves metrics to ´´´ runs/<experiments_name>/metrics.json ´´´
+7. Saves metrics to ´runs/<experiments_name>/metrics.json´
 
 Everything runs through: 
-´´´uv run python main.py´´´
+´uv run python main.py´
 This ensures full reproducibility. 
 
 ### Experiments
@@ -152,7 +154,7 @@ Batch size: 128
 Learning rate: 0.0005
 
 Running: 
-´´´uv run python main.py´´´
+´uv run python main.py´
 trains and evaluates this final model en-to-end. 
 
 ### Challenges encountered 
@@ -180,11 +182,11 @@ Ensuring deterministic behavior required:
 ### Reproducing the project 
 1. Clone repository
 2. Install enviroment 
-´´´uv sync´´´
+´uv sync´
 3. Pull dataset 
-´´´dvc pull´´´
+´dvc pull´
 4. Train final model 
-´´´uv run python main.py´´´
+´uv run python main.py´
 
 ### What this project demonstrates 
 Thid project demonstrates understanding of: 
